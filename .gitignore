@@ -1,0 +1,18 @@
+node_modules
+dist
+.DS_Store
+.env
+logs/
+out/
+# generated media (voices, engine renders, music) — recreated by the skills / setup
+public/**/*.mp3
+public/**/*.wav
+public/**/*.mp4
+!public/music/README.md
+# Remotion's own agent skills are installed by setup.sh
+.claude/skills/remotion-*
+.agents/skills/remotion-*
+skills-lock.json
+# per-story intermediate files written by the bridge
+src/stories/*/astro-timing.json
+tools/astro/config.local.json

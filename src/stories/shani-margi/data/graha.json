@@ -1,0 +1,98 @@
+{
+  "place": "Delhi, IN",
+  "tz": 5.5,
+  "ayanamsa": "samanvaya_ecliptic",
+  "asOf": "2026-11-22 06:00",
+  "now": {
+    "graha": "Saturn",
+    "hi": "शनि",
+    "sa": "Śani",
+    "lon": 346.98,
+    "rashi": {
+      "i": 12,
+      "name": "Mīna",
+      "hi": "मीन"
+    },
+    "degInRashi": 16.98,
+    "nak": {
+      "i": 27,
+      "name": "Revatī",
+      "hi": "रेवती",
+      "pada": 1
+    },
+    "retro": true
+  },
+  "dashaYears": 19,
+  "rulesRashis": [
+    {
+      "i": 10,
+      "name": "Makara",
+      "hi": "मकर"
+    },
+    {
+      "i": 11,
+      "name": "Kumbha",
+      "hi": "कुम्भ"
+    }
+  ],
+  "rulesNakshatras": [
+    {
+      "i": 8,
+      "name": "Puṣya",
+      "hi": "पुष्य"
+    },
+    {
+      "i": 17,
+      "name": "Anurādhā",
+      "hi": "अनुराधा"
+    },
+    {
+      "i": 26,
+      "name": "Uttara Bhādrapadā",
+      "hi": "उत्तर भाद्रपद"
+    }
+  ],
+  "comingEvents": [
+    {
+      "kind": "direct",
+      "when": "2026-12-11 05:23",
+      "graha": "Saturn",
+      "grahaHi": "शनि",
+      "to": {
+        "i": 12,
+        "name": "Mīna",
+        "hi": "मीन"
+      },
+      "from": null
+    },
+    {
+      "kind": "ingress",
+      "when": "2027-05-07 03:42",
+      "graha": "Saturn",
+      "grahaHi": "शनि",
+      "to": {
+        "i": 1,
+        "name": "Meṣa",
+        "hi": "मेष"
+      },
+      "from": {
+        "i": 12,
+        "name": "Mīna",
+        "hi": "मीन"
+      }
+    },
+    {
+      "kind": "retrograde",
+      "when": "2027-08-09 22:50",
+      "graha": "Saturn",
+      "grahaHi": "शनि",
+      "to": {
+        "i": 1,
+        "name": "Meṣa",
+        "hi": "मेष"
+      },
+      "from": null
+    }
+  ],
+  "days": 365
+}

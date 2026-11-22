@@ -1,0 +1,226 @@
+{
+  "place": "Delhi, IN",
+  "tz": 5.5,
+  "ayanamsa": "samanvaya_ecliptic",
+  "asOf": "2026-11-22 06:30",
+  "date": "2026-11-22",
+  "panchangaAtSunrise": {
+    "vara": "Ravivāra",
+    "varaHi": "रविवार",
+    "tithi": {
+      "i": 12,
+      "n": 13,
+      "name": "Trayodaśī",
+      "paksha": "śukla",
+      "hi": "शुक्ल त्रयोदशी"
+    },
+    "nakshatra": {
+      "i": 1,
+      "name": "Aśvinī",
+      "pada": 2,
+      "hi": "अश्विनी"
+    },
+    "yoga": {
+      "i": 16,
+      "name": "Vyatīpāta"
+    },
+    "karana": {
+      "i": 24,
+      "name": "Kaulava"
+    }
+  },
+  "sunrise": "2026-11-22 06:49",
+  "sunset": "2026-11-22 17:25",
+  "masa": {
+    "amanta": "Kartika",
+    "purnimanta": "Kartika",
+    "ritu": "Sharad",
+    "ayana": "Dakshinayana",
+    "amantaIAST": "Kārtika",
+    "purnimantaIAST": "Kārtika"
+  },
+  "samvat": {
+    "vikrama": 2083,
+    "saka": 1948,
+    "caitraYear": 2026,
+    "note": "Caitrādi (northern) reckoning: the year turns at Caitra śukla pratipadā"
+  },
+  "moon": {
+    "elongation": 144.85,
+    "illumination": 0.91
+  },
+  "grahas": [
+    {
+      "graha": "Sun",
+      "hi": "सूर्य",
+      "sa": "Sūrya",
+      "lon": 218.46,
+      "rashi": {
+        "i": 8,
+        "name": "Vṛścika",
+        "hi": "वृश्चिक"
+      },
+      "degInRashi": 8.46,
+      "nak": {
+        "i": 17,
+        "name": "Anurādhā",
+        "hi": "अनुराधा",
+        "pada": 2
+      },
+      "retro": false
+    },
+    {
+      "graha": "Moon",
+      "hi": "चन्द्र",
+      "sa": "Candra",
+      "lon": 3.31,
+      "rashi": {
+        "i": 1,
+        "name": "Meṣa",
+        "hi": "मेष"
+      },
+      "degInRashi": 3.31,
+      "nak": {
+        "i": 1,
+        "name": "Aśvinī",
+        "hi": "अश्विनी",
+        "pada": 1
+      },
+      "retro": false
+    },
+    {
+      "graha": "Mars",
+      "hi": "मंगल",
+      "sa": "Maṅgala",
+      "lon": 127.12,
+      "rashi": {
+        "i": 5,
+        "name": "Siṃha",
+        "hi": "सिंह"
+      },
+      "degInRashi": 7.12,
+      "nak": {
+        "i": 10,
+        "name": "Maghā",
+        "hi": "मघा",
+        "pada": 3
+      },
+      "retro": false
+    },
+    {
+      "graha": "Mercury",
+      "hi": "बुध",
+      "sa": "Budha",
+      "lon": 199.02,
+      "rashi": {
+        "i": 7,
+        "name": "Tulā",
+        "hi": "तुला"
+      },
+      "degInRashi": 19.02,
+      "nak": {
+        "i": 15,
+        "name": "Svātī",
+        "hi": "स्वाति",
+        "pada": 4
+      },
+      "retro": false
+    },
+    {
+      "graha": "Jupiter",
+      "hi": "बृहस्पति",
+      "sa": "Guru",
+      "lon": 125.05,
+      "rashi": {
+        "i": 5,
+        "name": "Siṃha",
+        "hi": "सिंह"
+      },
+      "degInRashi": 5.05,
+      "nak": {
+        "i": 10,
+        "name": "Maghā",
+        "hi": "मघा",
+        "pada": 2
+      },
+      "retro": false
+    },
+    {
+      "graha": "Venus",
+      "hi": "शुक्र",
+      "sa": "Śukra",
+      "lon": 182.82,
+      "rashi": {
+        "i": 7,
+        "name": "Tulā",
+        "hi": "तुला"
+      },
+      "degInRashi": 2.82,
+      "nak": {
+        "i": 14,
+        "name": "Citrā",
+        "hi": "चित्रा",
+        "pada": 3
+      },
+      "retro": false
+    },
+    {
+      "graha": "Saturn",
+      "hi": "शनि",
+      "sa": "Śani",
+      "lon": 346.98,
+      "rashi": {
+        "i": 12,
+        "name": "Mīna",
+        "hi": "मीन"
+      },
+      "degInRashi": 16.98,
+      "nak": {
+        "i": 27,
+        "name": "Revatī",
+        "hi": "रेवती",
+        "pada": 1
+      },
+      "retro": true
+    },
+    {
+      "graha": "Rahu",
+      "hi": "राहु",
+      "sa": "Rāhu",
+      "lon": 303.69,
+      "rashi": {
+        "i": 11,
+        "name": "Kumbha",
+        "hi": "कुम्भ"
+      },
+      "degInRashi": 3.69,
+      "nak": {
+        "i": 23,
+        "name": "Dhaniṣṭhā",
+        "hi": "धनिष्ठा",
+        "pada": 4
+      },
+      "retro": true
+    },
+    {
+      "graha": "Ketu",
+      "hi": "केतु",
+      "sa": "Ketu",
+      "lon": 123.69,
+      "rashi": {
+        "i": 5,
+        "name": "Siṃha",
+        "hi": "सिंह"
+      },
+      "degInRashi": 3.69,
+      "nak": {
+        "i": 10,
+        "name": "Maghā",
+        "hi": "मघा",
+        "pada": 2
+      },
+      "retro": true
+    }
+  ],
+  "festivals": []
+}

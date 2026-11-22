@@ -1,0 +1,12 @@
+{
+  "_note": "Defaults used for the reel brief. Skills pre-select these and use them without asking in daily/scheduled runs.",
+  "length_seconds": 45,
+  "voice": "female",
+  "voice_rate": "+0%",
+  "language": "hi",
+  "music": "tanpura",
+  "music_volume": 0.12,
+  "captions": true,
+  "handle": "",
+  "place": "Delhi, IN"
+}
