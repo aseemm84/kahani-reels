@@ -6,6 +6,7 @@ Remotion project for 9:16 Hindi reels. Default narration language: pure Hindi (D
 Unattended runs (daily, `claude -p`) never ask — they use the defaults.
 
 Which skill:
+- A pasted/attached storyboard (Gemini "Kahani Storyboard Director" JSON, contains `kahani_storyboard`) → `storyboard-reel`
 - Original reel on a Jyotiṣa/sky topic — Nirayana data + own layout + own story → `nirayana-story`
 - Reel rendered by Nirayana's Reel Studio templates → `astro-reel`
 - Cartoon story / legend → `kahani-reel`
@@ -13,6 +14,7 @@ Which skill:
 
 Nirayana engine bridge: `node tools/astro/bridge.mjs list | facts | today | render | data sky|events|nakshatra|rashi|graha`.
 Update the engine: `bash tools/update-astro.sh`. Tanpura music: `python3 tools/make_music.py`.
-Never modify src/kahani/ unless asked (new data layouts may be added to src/kahani/astro/);
+Never modify src/kahani/ unless asked (new data layouts may be added to src/kahani/astro/; storyboard engine,
+Figure and Scenery live in src/storyboard/ and may be extended);
 add stories under src/stories/ and register them in src/stories/registry.ts.
 Preview: `npm run dev`. Render: `npx remotion render <Id> out/<slug>.mp4`.

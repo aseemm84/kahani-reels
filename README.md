@@ -11,6 +11,7 @@ data. The reels are made by an AI agent (Claude Code or Google Antigravity), dra
 | **Astro reel** | Nirayana's own Reel Studio animation (126 templates), narrated as a Hindi story and synced to the voice | Make an astro reel about Rohini nakshatra |
 | **Kahani** | A cartoon story or legend, with Jyotiṣa facts taken from Nirayana where relevant | चन्द्रमा और रोहिणी की कहानी, cartoon reel |
 | **Daily** | Nirayana's Studio picks today's best topic, and the agent makes the reel | Make today's daily reel |
+| **Storyboard** | A scene-by-scene storyboard written by your Gemini Gem, on any story from Indian Hindu culture, built faithfully: camera, shots, transitions, characters | *(paste the Gem's reply)* |
 
 Every reel first asks for a short **brief**: length (30/45/60/90 s), female or male voice, music (none,
 tanpura, or your own file) and captions. It then asks about language, voice speed, your handle, and whether
@@ -86,6 +87,30 @@ Each daily run first updates Astro, then makes the reel. It saves `reel.mp4` and
 
 ---
 
+## Gemini storyboards → reels
+
+Gemini writes the story and Claude builds the reel.
+
+1. **Create the Gem (once).** In Gemini, go to **Gems → New Gem**, name it *Kahani Storyboard Director*, and
+   paste the instructions from [`gemini/GEM-INSTRUCTIONS.md`](gemini/GEM-INSTRUCTIONS.md). You can also add
+   [`gemini/storyboard-example.json`](gemini/storyboard-example.json) as a knowledge file.
+2. **Ask it for a story**, for example: *"गणेश जी और चन्द्रमा की कथा, 45 सेकंड"* or *"Why is Diwali
+   celebrated? 60 s"*. It replies with a Hindi summary, a JSON storyboard and an authenticity note. The
+   storyboard covers sources, characters, and each scene's narration, caption, setting, palette, camera
+   move/shot/focus and transition.
+3. **Paste the whole reply into Claude** (Code tab, or Remote Control from your iPhone). The `storyboard-reel`
+   skill then:
+   - validates the storyboard
+   - asks only what the storyboard leaves open
+   - flags authenticity doubts instead of silently changing the story
+   - fills Jyotiṣa `{{placeholders}}` from Nirayana
+   - builds each character once with the pose-able `Figure`
+   - renders the reel
+
+Check a storyboard yourself with
+`python3 .claude/skills/storyboard-reel/scripts/validate_storyboard.py storyboards/<file>.md`.
+The included example, `HanumanSanjeevaniReel`, was built from `gemini/storyboard-example.json`.
+
 ## How it works
 
 ```
@@ -100,7 +125,9 @@ your request ─▶ reel brief ─▶ skill ─▶ Nirayana bridge (facts / data
 | `.claude/skills/kahani-reel/references/reel-brief.md` | the questions asked before every reel, and how the answers are applied |
 | `src/kahani/` | the reel engine: background with stars and diyas, captions, title, camera, crossfades, handle, `AstroReel` |
 | `src/kahani/astro/` | data-driven layouts: `ZodiacWheel`, `NakshatraArc`, `MoonPhase`, `InfoCards`, `Timeline`, `BigStat`, `GrahaOrb`, `RetroLoop` |
-| `src/stories/` | one folder per reel, all listed in `registry.ts` (`demo` and the `shani-margi` example are included) |
+| `src/storyboard/` | storyboard engine: `StoryboardReel`, camera (10 moves × 7 shots), 8 transitions, 6 sky palettes, the pose-able `Figure` (14 poses), and scenery (sea, herb mountain, battlefield, lotus, burst) |
+| `gemini/` | instructions for the Gemini Gem, plus an example storyboard |
+| `src/stories/` | one folder per reel, all listed in `registry.ts` (the `demo`, `shani-margi` and `hanuman-sanjeevani` examples are included) |
 | `tools/astro/bridge.mjs` | the bridge that drives the Nirayana pages headlessly |
 | `tools/make_music.py` | generates a royalty-free tanpura drone |
 | `tools/update-astro.sh` | `git pull` of Astro, plus a bridge check |

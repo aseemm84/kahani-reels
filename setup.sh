@@ -50,7 +50,7 @@ npx playwright install chromium
 say "Installing Remotion's agent skills (Claude Code + Antigravity)"
 npx -y remotion skills add || echo "(skipped — run 'npx remotion skills add' later)"
 mkdir -p .agents/skills
-for sk in kahani-reel astro-reel astro-daily nirayana-story; do rm -rf ".agents/skills/$sk"; cp -R ".claude/skills/$sk" .agents/skills/; done
+for sk in kahani-reel astro-reel astro-daily nirayana-story storyboard-reel; do rm -rf ".agents/skills/$sk"; cp -R ".claude/skills/$sk" .agents/skills/; done
 chmod +x tools/*.sh tools/astro/*.sh
 
 say "Generating the royalty-free tanpura background music"
@@ -68,6 +68,7 @@ Open this folder in the Claude desktop app (Code tab) or Antigravity and ask, e.
   शनि मार्गी पर अपनी कहानी वाली रील बनाओ                (Nirayana data · own layout · own story)
   Make an astro reel about Rohini nakshatra             (Nirayana Reel Studio template)
   हनुमान जी और संजीवनी की कहानी, cartoon reel             (cartoon kahani)
+  <paste a Gemini storyboard>                           (storyboard → reel)
   Make today's daily reel                               (Studio → reel)
 Every reel first asks: length · voice · music · captions · language · speed · handle.
 From your iPhone:  claude --remote-control   (then open the session in the Claude app → Code)
