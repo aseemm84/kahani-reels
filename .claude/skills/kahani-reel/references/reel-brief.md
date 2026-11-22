@@ -6,13 +6,20 @@ Skip any question the prompt already answers. Put the saved default first and ma
 
 **Round 1 — always**
 1. **Length** — 30 s · 45 s · 60 s · 90 s
-2. **Voice** — Female (hi-IN-SwaraNeural) · Male (hi-IN-MadhurNeural)
-3. **Background music** — None · Tanpura drone (bundled, royalty-free) · My own file (`public/music/*.mp3`)
+2. **Voice** — Female · Male  (+ quality: **Natural – Sarvam** (default) · **Expressive – Gemini** · ElevenLabs ·
+   Free basic – Edge). Offer only providers whose key is in `.env`; Edge always works. Voice ids per provider:
+   `reel-defaults.json` (`sarvam_female` …) → `tools/voices.json`. To audition: `python3 tools/voice_samples.py`.
+3. **Background music** — offer the 3 styles that best fit the topic + None (user can type another):
+   tanpura (devotional drone) · bansuri (peaceful, Kṛṣṇa, dawn) · santoor (gentle storytelling) ·
+   temple (bells, aarti, deities) · tabla (lively storytelling) · ambient (narration, explainers) ·
+   suspense (battles, demons, mystery) · festive (festivals, weddings) · lullaby (children, bedtime) ·
+   my own file (`public/music/*.mp3`). `"music": "auto"` in defaults = you pick by topic.
 4. **Captions** — Hindi captions on · Off
 
 **Round 2 — technical (one call; skip if the user said "use defaults")**
 5. **Language** — Pure Hindi (Devanagari) · Hinglish · English
-6. **Voice speed** — Normal (+0%) · Calm (-8%) · Brisk (+8%)
+6. **Voice mood** — Warm · Calm · Devotional · Dramatic · Energetic · Children (sets pace and, for Gemini, the
+   speaking style; see `moods` in `tools/voices.json`)
 7. **Handle / watermark** — None · the saved handle · type a new one (e.g. @Nirayana.Soft)
 8. **Save these as my defaults?** — Yes · No  → if yes, write them to `reel-defaults.json`.
 
@@ -26,8 +33,8 @@ state the values used in the final report.
 | Answer | Where it goes |
 |---|---|
 | Length L | script ≈ L×2.2 Hindi words (≈ L×2.5 Hinglish, L×2.6 English); scenes = round(L/6) |
-| Voice / speed | `make_voice.py --voice <id> --rate <rate>` |
-| Music | story `music: "music/tanpura.mp3"`, `musicVolume` from defaults. Tanpura missing → `python3 tools/make_music.py` |
+| Voice / quality / mood | `make_voice.py <slug> --provider sarvam|gemini|elevenlabs|edge --gender female|male --mood <mood> --fallback edge` |
+| Music | story `music: "music/<style>.mp3"`, `musicVolume` from defaults. File missing → `python3 tools/make_music.py --style <style>` |
 | Captions | `captions` flag (astro) / leave `caption` empty strings to hide (kahani & nirayana-story) |
 | Language | narration script + captions in that language |
 | Handle | story `handle` |

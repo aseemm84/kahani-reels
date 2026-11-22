@@ -37,8 +37,8 @@ For each entry run the bridge (`node tools/astro/bridge.mjs data …`, hint in `
 ## 5. Script + voice
 - `src/stories/<slug>/script.json` = `[{narration, caption}]` straight from the scenes (captions empty if the brief
   turned captions off).
-- `python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --voice <hi-IN-MadhurNeural|hi-IN-SwaraNeural> --rate <rate>`
-  Voice mood → rate: calm/devotional −5%, warm 0%, dramatic/energetic +5% (unless the brief set a speed).
+- `python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --provider <brief provider> --gender <female|male> --mood <mood> --fallback edge`
+  `--gender` from `voice.gender`, `--mood` from `voice.mood` (calm · devotional · warm · dramatic · energetic · children).
 - If the real total is >15 % off `target_seconds`, tell the user and offer to trim; don't rewrite unasked.
 
 ## 6. Characters — build once, reuse everywhere
@@ -62,7 +62,7 @@ Story object (type `SBStory` from `../../storyboard/StoryboardReel`):
 ```ts
 export const <camel>Story: SBStory = {
   slug, id, title: sb.title, kicker: sb.kicker, voice, handle, diyas: sb.diyas ?? true,
-  music: sb.music === "tanpura" ? "music/tanpura.mp3" : undefined, musicVolume: 0.12,
+  music: sb.music && sb.music !== "none" ? `music/${sb.music}.mp3` : undefined, musicVolume: 0.12,
   scenes: sb.scenes.map((s, i) => ({
     narration: script[i].narration, caption: script[i].caption, seconds: s.seconds, Visual: VISUALS[i],
     camera: { ...s.camera, focus: focusOf(s.camera.focus) },   // character id → {x,y} from its position

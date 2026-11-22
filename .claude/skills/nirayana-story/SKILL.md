@@ -44,7 +44,7 @@ Then: `python3 .claude/skills/nirayana-story/scripts/verify_numbers.py <slug>` �
 not in the data (27 nakṣatras, 12 rāśis, 4 pādas, 360°) go into `derived.json` with a reason.
 
 ## 4. Voice
-`python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --voice <brief voice> --rate <brief rate>`
+`python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --provider <brief provider> --gender <female|male> --mood <mood> --fallback edge`
 Check the total against the brief's length (±15 %); adjust script and re-voice if needed.
 
 ## 5. Scenes → `src/stories/<slug>/index.tsx`

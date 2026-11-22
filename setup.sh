@@ -28,8 +28,9 @@ echo "node $(node -v) · $(ffmpeg -version | head -1 | cut -d' ' -f1-3) · $(pyt
 say "Installing project packages"
 npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 
-say "Installing the free Hindi voice engine (edge-tts)"
-python3 -m pip install --quiet --upgrade edge-tts || python3 -m pip install --quiet --user --break-system-packages edge-tts
+say "Installing Python helpers (edge-tts voice fallback, numpy for music)"
+python3 -m pip install --quiet --upgrade edge-tts numpy || python3 -m pip install --quiet --user --break-system-packages edge-tts numpy
+[ -f .env ] || { cp .env.example .env; echo "Created .env — add your SARVAM_API_KEY / GEMINI_API_KEY for natural Hindi voices."; }
 
 say "Getting the Astro (Nirayana) engine"
 ASTRO_DIR="${ASTRO_DIR:-$HOME/Astro}"
@@ -53,13 +54,15 @@ mkdir -p .agents/skills
 for sk in kahani-reel astro-reel astro-daily nirayana-story storyboard-reel; do rm -rf ".agents/skills/$sk"; cp -R ".claude/skills/$sk" .agents/skills/; done
 chmod +x tools/*.sh tools/astro/*.sh
 
-say "Generating the royalty-free tanpura background music"
-[ -f public/music/tanpura.mp3 ] || python3 tools/make_music.py --out public/music/tanpura.mp3
+say "Generating royalty-free Indian background music (9 styles)"
+for st in tanpura bansuri santoor temple tabla ambient suspense festive lullaby; do
+  [ -f "public/music/$st.mp3" ] || python3 tools/make_music.py --style "$st"
+done
 
 say "Test 1/2: Nirayana bridge"
 node tools/astro/bridge.mjs data nakshatra 4 --out out/check-nakshatra.json >/dev/null && echo "✓ Astro bridge OK ($(git -C "$ASTRO_DIR" log -1 --format=%h 2>/dev/null))"
 say "Test 2/2: voice + render of the demo reel"
-python3 .claude/skills/kahani-reel/scripts/make_voice.py demo || echo "(voice test failed — check internet)"
+python3 .claude/skills/kahani-reel/scripts/make_voice.py demo --fallback edge || python3 .claude/skills/kahani-reel/scripts/make_voice.py demo --provider edge || echo "(voice test failed — check internet)"
 npx remotion render DemoReel out/demo.mp4
 
 printf "\n\033[1;32m✓ All set!\033[0m  Demo: %s/out/demo.mp4\n" "$ROOT"
@@ -70,7 +73,8 @@ Open this folder in the Claude desktop app (Code tab) or Antigravity and ask, e.
   हनुमान जी और संजीवनी की कहानी, cartoon reel             (cartoon kahani)
   <paste a Gemini storyboard>                           (storyboard → reel)
   Make today's daily reel                               (Studio → reel)
-Every reel first asks: length · voice · music · captions · language · speed · handle.
+Every reel first asks: length · voice (Sarvam / Gemini / free) · music (9 styles) · captions · language · mood · handle.
+Natural voices: put SARVAM_API_KEY and/or GEMINI_API_KEY in .env, then audition:  python3 tools/voice_samples.py
 From your iPhone:  claude --remote-control   (then open the session in the Claude app → Code)
 Daily reel at 06:30:  bash tools/install-daily.sh
 MSG

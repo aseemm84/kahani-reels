@@ -38,7 +38,7 @@ Before any work, follow `.claude/skills/kahani-reel/references/reel-brief.md` (i
    - Caption: 2–5 words in the narration's script, highlight ONE word with `*stars*`.
    - Treat religious and mythological figures respectfully; stay faithful to the traditional story.
 
-3. **Voice**: `python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --voice <voice> --rate +5%`
+3. **Voice**: `python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --provider <brief provider> --gender <female|male> --mood <mood> --fallback edge` (mood: calm · devotional · warm · dramatic · energetic · children)
    (in Antigravity the same script is at `.agents/skills/kahani-reel/scripts/`). This writes
    `public/<slug>/sN.mp3` and `voice.json` with real durations. If total voice differs from target by
    >15 %, edit the script and re-run. Fix one line with `--only N`.

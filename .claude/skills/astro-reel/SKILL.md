@@ -37,7 +37,7 @@ Before any work, follow `.claude/skills/kahani-reel/references/reel-brief.md` (i
      "शास्त्रीय अध्ययन का ढाँचा, भविष्यवाणी नहीं" if the topic drifts toward prediction.
    - Caption: 2–4 Devanagari words, one word in `*stars*`.
 
-4. **Voice** (voice + speed from the brief): `python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --voice hi-IN-SwaraNeural --rate +0%`
+4. **Voice** (voice + speed from the brief): `python3 .claude/skills/kahani-reel/scripts/make_voice.py <slug> --provider <brief provider> --gender <female|male> --mood <mood> --fallback edge`
    (male: `hi-IN-MadhurNeural`). Fix a single line with `--only N`.
 
 5. **Render the engine frames, synced to the voice**: `node tools/astro/bridge.mjs render <slug>`

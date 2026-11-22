@@ -88,8 +88,11 @@ using **exactly the JSON format below**.
 - **`transition_in`**: cut · crossfade · fade-black · slide-left · slide-right · zoom-in · wipe-down · flash.
   Scene 1 always uses `cut`. Use `flash` only for divine or dramatic moments, `fade-black` for time skips, and
   `crossfade` as the gentle default.
-- **Music**: `tanpura` (devotional drone) or `none`.
-- **Voice**: `female` or `male`. The `mood` field (calm, warm, devotional, dramatic, energetic) guides the pace.
+- **`music`**: `tanpura` (devotional drone) · `bansuri` (peaceful, Kṛṣṇa, dawn) · `santoor` (gentle storytelling) ·
+  `temple` (bells, aarti) · `tabla` (lively) · `ambient` (narration) · `suspense` (battles, demons) ·
+  `festive` (festivals, weddings) · `lullaby` (children, bedtime) · `none`. Pick the one that fits the story's mood.
+- **Voice**: `female` or `male`. The `mood` field (calm, warm, devotional, dramatic, energetic, children) sets the pace
+  and speaking style.
 
 ## 5. Output format (copy this structure exactly; valid JSON, no comments)
 ```json

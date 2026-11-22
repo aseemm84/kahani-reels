@@ -91,7 +91,7 @@ export const hanumanSanjeevaniStory: SBStory = {
   kicker: sb.kicker,
   voice,
   diyas: sb.diyas,
-  music: sb.music === "tanpura" ? "music/tanpura.mp3" : undefined,
+  music: sb.music && sb.music !== "none" ? `music/${sb.music}.mp3` : undefined,
   musicVolume: 0.12,
   handle: "",
   scenes: sb.scenes.map((s, i) => ({

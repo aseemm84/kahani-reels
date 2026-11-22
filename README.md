@@ -13,8 +13,8 @@ data. The reels are made by an AI agent (Claude Code or Google Antigravity), dra
 | **Daily** | Nirayana's Studio picks today's best topic, and the agent makes the reel | Make today's daily reel |
 | **Storyboard** | A scene-by-scene storyboard written by your Gemini Gem, on any story from Indian Hindu culture, built faithfully: camera, shots, transitions, characters | *(paste the Gem's reply)* |
 
-Every reel first asks for a short **brief**: length (30/45/60/90 s), female or male voice, music (none,
-tanpura, or your own file) and captions. It then asks about language, voice speed, your handle, and whether
+Every reel first asks for a short **brief**: length (30/45/60/90 s), female or male voice and its quality
+(Sarvam, Gemini or the free voice), music (9 Indian styles or your own file) and captions. It then asks about language, voice speed, your handle, and whether
 to save these as defaults. Daily runs use the saved defaults in `reel-defaults.json` and don't ask.
 
 ---
@@ -152,11 +152,46 @@ node tools/astro/bridge.mjs data nakshatra rohini | rashi 2 | graha shani
 - Deity, gaṇa, yoni and nāḍī are presented as later tradition, the same way Nirayana labels them.
 - Reels never make predictions.
 
-## Voices, music and licences
+## Voices
 
-- **Voices:** Microsoft Edge neural voices through edge-tts, which is free: `hi-IN-SwaraNeural` (female)
-  and `hi-IN-MadhurNeural` (male).
-- **Music:** the tanpura drone is generated on your machine, so there's no copyright issue. You can also
-  put your own `.mp3` files in `public/music/`.
-- **Remotion:** free for individuals and teams of up to 3 people. See
-  [remotion.dev/license](https://remotion.dev/license).
+| Option | Quality | Cost | Set up |
+|---|---|---|---|
+| **Sarvam AI Bulbul v4** (default) | Most natural Indian Hindi. Dedicated narration, storytelling, documentary and devotional voices | ₹20 per 10,000 characters (about ₹2–3 per reel) | Get a key at [dashboard.sarvam.ai](https://dashboard.sarvam.ai) and add `SARVAM_API_KEY=` to `.env` |
+| **Gemini TTS** | Expressive; follows a speaking style ("devotional", "dramatic"…) | Billed through your Gemini API key | Get a key at [aistudio.google.com](https://aistudio.google.com) and add `GEMINI_API_KEY=` to `.env` |
+| **ElevenLabs** (optional) | Premium | Paid plans | Add `ELEVENLABS_API_KEY` plus Hindi voice IDs to `.env` |
+| **Edge** | Basic, more robotic | Free, no key | — (also used as the automatic fallback) |
+
+Steps:
+1. Copy `.env.example` to `.env`. Setup does this for you.
+2. Fill in one or more keys.
+3. Run `python3 tools/voice_samples.py` to hear the same Hindi line in every voice. The samples are saved to
+   `out/voice-samples/`.
+4. Put your favourites in `reel-defaults.json` (`voice_provider`, `sarvam_female`, `sarvam_male`, …).
+
+Every reel's brief asks for female or male, the voice quality, and a mood: warm, calm, devotional, dramatic,
+energetic or children. `.env` is never committed.
+
+## Music (royalty-free, generated on your Mac)
+
+`python3 tools/make_music.py --list` shows every style, and `--style <name>` regenerates one; add `--seed N`
+for a variation. Setup creates all nine:
+
+| Style | Mood |
+|---|---|
+| `tanpura` | devotional drone |
+| `bansuri` | flute in rāga Bhūpālī: peaceful, Kṛṣṇa, dawn |
+| `santoor` | gentle storytelling |
+| `temple` | bells, ghanta and conch: aarti, deities |
+| `tabla` | tīntāl-style groove: lively storytelling |
+| `ambient` | warm pads: narration, explainers |
+| `suspense` | battles, demons, mystery |
+| `festive` | dhol and shehnai-like lead: festivals, weddings |
+| `lullaby` | music-box: children, bedtime |
+
+You can also drop any `.mp3` into `public/music/` and choose "my own file" in the brief. Free licensed
+libraries include the YouTube Audio Library and Pixabay Music.
+
+## Licences
+Remotion is free for individuals and teams of up to 3 people; see
+[remotion.dev/license](https://remotion.dev/license). The generated music is yours. Sarvam, Gemini and
+ElevenLabs output is subject to each provider's terms.

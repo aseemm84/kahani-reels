@@ -24,6 +24,8 @@ TOPICS = {"itihasa", "purana", "mythology", "festival", "saint", "temple-legend"
           "history", "tradition-explainer", "jyotisha-legend", "jyotisha-data"}
 SOURCED = {"itihasa", "purana", "mythology", "festival", "saint", "temple-legend", "history", "jyotisha-legend", "devotional"}
 WPS = {"hi": 2.2, "hinglish": 2.5, "en": 2.6}
+MUSIC = {"tanpura", "bansuri", "santoor", "temple", "tabla", "ambient", "suspense", "festive", "lullaby", "none"}
+MOODS = {"calm", "warm", "devotional", "dramatic", "energetic", "children"}
 
 def extract(text: str):
     m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.S)
@@ -52,6 +54,8 @@ def main():
     lang = sb.get("language", "hi")
     if lang not in WPS: E("language must be hi | hinglish | en")
     target = sb.get("target_seconds", 0)
+    if sb.get("music", "none") not in MUSIC: W(f"music \"{sb.get('music')}\" unknown — use one of {sorted(MUSIC)}")
+    if sb.get("voice", {}).get("mood", "warm") not in MOODS: W(f"voice.mood should be one of {sorted(MOODS)}")
     chars = {c.get("id") for c in sb.get("characters", [])}
     for c in sb.get("characters", []):
         for k in ("id", "name", "look"):

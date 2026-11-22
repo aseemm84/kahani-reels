@@ -1,0 +1,44 @@
+{
+  "_note": "Voice catalogue for make_voice.py. 'female'/'male' are the defaults per provider; 'more' are alternatives to audition (python3 tools/voice_samples.py). Sarvam genders: verify by ear — names are a guide only.",
+  "sarvam": {
+    "label": "Sarvam AI Bulbul v4 — most natural Indian Hindi (paid, very cheap; key from dashboard.sarvam.ai)",
+    "model": "bulbul:v4-flash",
+    "female": "simran_hi_narration",
+    "male": "shubh_hi_stories_mixed",
+    "more": {
+      "female": ["roopa_hi_narration", "shilpa_hi_narration", "tanya_hi_narration"],
+      "male": ["shubh_hi_stories_dramatic", "anand_hi_documentary", "ratan_hi_documentary", "mahesh_hi_documentary"],
+      "devotional": ["mani_hi_devotional", "nachiket_hi_devotional", "girish_hi_devotional", "shubh_hi_devotional", "ratan_hi_devotional"],
+      "character": ["ashok_hi_character", "advait_hi_character"]
+    }
+  },
+  "gemini": {
+    "label": "Gemini TTS — expressive, follows a style prompt (Gemini API key from aistudio.google.com)",
+    "model": "gemini-3.8-flash-tts",
+    "female": "Sulafat",
+    "male": "Algieba",
+    "more": {
+      "female": ["Vindemiatrix", "Achernar", "Kore", "Aoede", "Despina"],
+      "male": ["Charon", "Sadaltager", "Gacrux", "Orus", "Iapetus"]
+    }
+  },
+  "elevenlabs": {
+    "label": "ElevenLabs — premium; set ELEVENLABS_VOICE_FEMALE / _MALE to Hindi voice IDs from your Voice Library",
+    "model": "eleven_v3",
+    "female": "env:ELEVENLABS_VOICE_FEMALE",
+    "male": "env:ELEVENLABS_VOICE_MALE"
+  },
+  "edge": {
+    "label": "Microsoft Edge neural — free, no key, more robotic",
+    "female": "hi-IN-SwaraNeural",
+    "male": "hi-IN-MadhurNeural"
+  },
+  "moods": {
+    "calm":       { "rate": "-5%", "sarvam_pace": 0.92, "style": "calm, unhurried Hindi storyteller, soft warm tone" },
+    "devotional": { "rate": "-6%", "sarvam_pace": 0.9,  "style": "reverent, devotional, gentle and heartfelt, like a kathavachak" },
+    "warm":       { "rate": "+0%", "sarvam_pace": 1.0,  "style": "warm, friendly Hindi storyteller" },
+    "dramatic":   { "rate": "+3%", "sarvam_pace": 1.02, "style": "dramatic storyteller, building suspense, expressive" },
+    "energetic":  { "rate": "+6%", "sarvam_pace": 1.08, "style": "lively, energetic and joyful" },
+    "children":   { "rate": "-4%", "sarvam_pace": 0.94, "style": "gentle, playful bedtime-story voice for children" }
+  }
+}
